@@ -41,6 +41,14 @@ df.display()
 
 # COMMAND ----------
 
+df.select("dt_eleicao").distinct().display()
+
+# COMMAND ----------
+
+df2.display()
+
+# COMMAND ----------
+
 # MAGIC %md 
 # MAGIC ## Visualizando schema do arquivo
 

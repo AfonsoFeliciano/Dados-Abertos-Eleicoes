@@ -29,11 +29,11 @@ mode = "overwrite"
 # COMMAND ----------
 
 # MAGIC %md 
-# MAGIC ## Realizando leitura e criando DM_PARTIDO
+# MAGIC ## Realizando leitura e criando DM_GRAU_INSTRUCAO
 
 # COMMAND ----------
 
-df = spark.read.parquet(path_silver + file_consulta_cand).select("NR_PARTIDO", "SG_PARTIDO", "NM_PARTIDO").distinct()
+df = spark.read.parquet(path_silver + file_consulta_cand).select("CD_GRAU_INSTRUCAO", "DS_GRAU_INSTRUCAO").distinct()
 df.display()
 df.printSchema()
 
@@ -45,4 +45,7 @@ df.printSchema()
 
 # COMMAND ----------
 
-fn_write_parquet(df, path_gold_dm, "dm_partido", mode)
+fn_write_parquet(df, path_gold_dm, "dm_grau_instrucao", mode)
+
+# COMMAND ----------
+

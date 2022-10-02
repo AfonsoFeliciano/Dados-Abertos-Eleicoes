@@ -29,11 +29,11 @@ mode = "overwrite"
 # COMMAND ----------
 
 # MAGIC %md 
-# MAGIC ## Realizando leitura e criando DM_PARTIDO
+# MAGIC ## Realizando leitura e criando DM_CANDIDATO
 
 # COMMAND ----------
 
-df = spark.read.parquet(path_silver + file_consulta_cand).select("NR_PARTIDO", "SG_PARTIDO", "NM_PARTIDO").distinct()
+df = spark.read.parquet(path_silver + file_consulta_cand).select("SQ_CANDIDATO", "NR_CANDIDATO", "NM_CANDIDATO", "NM_URNA_CANDIDATO", "NM_SOCIAL_CANDIDATO", "NR_CPF_CANDIDATO", "NM_EMAIL", "NR_TITULO_ELEITORAL_CANDIDATO", "CD_GENERO", "CD_GRAU_INSTRUCAO", "CD_ESTADO_CIVIL", "CD_COR_RACA", "CD_OCUPACAO").distinct()
 df.display()
 df.printSchema()
 
@@ -45,4 +45,4 @@ df.printSchema()
 
 # COMMAND ----------
 
-fn_write_parquet(df, path_gold_dm, "dm_partido", mode)
+fn_write_parquet(df, path_gold_dm, "dm_candidato", mode)
