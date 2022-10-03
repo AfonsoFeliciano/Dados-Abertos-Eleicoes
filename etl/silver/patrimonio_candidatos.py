@@ -36,7 +36,7 @@ mode = "overwrite"
 
 # COMMAND ----------
 
-df = spark.read.parquet(path_bronze + file_bem_cand)
+df = spark.read.parquet(path_bronze + file_bem_cand).filter("CD_ELEICAO IS NOT NULL")
 df.display()
 
 # COMMAND ----------

@@ -41,14 +41,6 @@ df.display()
 
 # COMMAND ----------
 
-df.select("dt_eleicao").distinct().display()
-
-# COMMAND ----------
-
-df2.display()
-
-# COMMAND ----------
-
 # MAGIC %md 
 # MAGIC ## Visualizando schema do arquivo
 
@@ -73,6 +65,17 @@ df = fn_replace_values_with_null(df, "#NULO#")
 df = fn_replace_values_with_null(df, "#NULO")
 df = fn_replace_values_with_null(df, "#NE")
 df = fn_replace_values_with_null(df, "#NE#")
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### 1.1 - Substituindo -1 e -4 por null/none na coluna de despesas
+
+# COMMAND ----------
+
+df = df.withColumn("VR_DESPESA_MAX_CAMPANHA", 
+                   when( (col("VR_DESPESA_MAX_CAMPANHA") != -1) & (col("VR_DESPESA_MAX_CAMPANHA") != -4), col("VR_DESPESA_MAX_CAMPANHA"))
+                  )
 
 # COMMAND ----------
 
